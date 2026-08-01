@@ -23,3 +23,20 @@ def adjust_saturation(image_rgb: np.ndarray, saturation_scale: float) -> np.ndar
     hsv[:, :, 1] = np.clip(hsv[:, :, 1] * saturation_scale, 0, 255)
     hsv = hsv.astype(np.uint8)
     return cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)
+
+
+def convert_color_space(image_rgb: np.ndarray, target_space: str) -> np.ndarray:
+    """
+    Convert an RGB image to the chosen color space for DISPLAY purposes.
+    Note: HSV/BGR arrays displayed directly will look 'wrong' to the eye on purpose —
+    that's the actual pixel data in that color space, which is the point of showing it.
+    """
+    if target_space == "RGB":
+        return image_rgb
+    elif target_space == "BGR":
+        return cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)
+    elif target_space == "HSV":
+        return cv2.cvtColor(image_rgb, cv2.COLOR_RGB2HSV)
+    else:
+        raise ValueError(f"Unknown color space: {target_space}")
+ 
