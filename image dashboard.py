@@ -39,4 +39,14 @@ def convert_color_space(image_rgb: np.ndarray, target_space: str) -> np.ndarray:
         return cv2.cvtColor(image_rgb, cv2.COLOR_RGB2HSV)
     else:
         raise ValueError(f"Unknown color space: {target_space}")
+
+
+    def numpy_to_downloadable_bytes(image_array: np.ndarray, file_format: str = "PNG") -> bytes:
+        """
+        Convert a NumPy RGB array into downloadable image bytes.
+        """
+        pil_image = Image.fromarray(image_array)
+        buffer = io.BytesIO()
+        pil_image.save(buffer, format=file_format)
+        return buffer.getvalue()
  
