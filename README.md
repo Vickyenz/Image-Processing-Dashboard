@@ -35,12 +35,7 @@ This project was built as a hands-on exercise in applying core computer vision c
 
 ## Demo
 
-*(Add a screenshot or GIF of the running app here — this is the single highest-impact addition you can make to this README. A visual preview is often the deciding factor in whether someone explores a repo further.)*
-
-```
 ![App Screenshot](assets/demo-screenshot.png)
-```
-
 ---
 
 ## Tech Stack
